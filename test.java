@@ -9,7 +9,6 @@ public class test extends JFrame implements MouseListener {
 static test win = new test();
 static String [] num = {" 1"," 2"," 3"," 4"," 5"," 6"," 7"," 8"," 9","10","11","12","13","14","15","  "};
 static Font font = new Font("Serif", Font.BOLD,24); // "Courier"
-final BufferedImage bi1 = new BufferedImage( 64, 64, BufferedImage.TYPE_INT_ARGB );
 
 public static void renum(){
 int n1;
@@ -91,16 +90,14 @@ public void mouseExited(MouseEvent e) {
 }
 
 public void mousePressed(MouseEvent e) {
-	//JOptionPane.showMessageDialog(null, "message", "title", 1);
 int X=((e.getX()-5)>>6);
 int Y=((e.getY()-28)>>6);
 int B=(X+(Y<<2));
-String S;
 
-if(X>0)if(num[B-1].charAt(1)==' '){S=num[B-1];num[B-1]=num[B];num[B]=S;win.repaint();}
-if(X<3)if(num[B+1].charAt(1)==' '){S=num[B+1];num[B+1]=num[B];num[B]=S;win.repaint();}
-if(Y>0)if(num[B-4].charAt(1)==' '){S=num[B-4];num[B-4]=num[B];num[B]=S;win.repaint();}
-if(Y<3)if(num[B+4].charAt(1)==' '){S=num[B+4];num[B+4]=num[B];num[B]=S;win.repaint();}
+if(X>0)if(num[B-1]=="  "){num[B-1]=num[B];num[B]="  ";win.repaint();}
+if(X<3)if(num[B+1]=="  "){num[B+1]=num[B];num[B]="  ";win.repaint();}
+if(Y>0)if(num[B-4]=="  "){num[B-4]=num[B];num[B]="  ";win.repaint();}
+if(Y<3)if(num[B+4]=="  "){num[B+4]=num[B];num[B]="  ";win.repaint();}
 if(num[15]=="  "){
 	B=0;
 	for(int i=1;i<14;i++)
