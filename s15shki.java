@@ -106,6 +106,7 @@ public class s15shki extends JFrame implements MouseListener {
   public void mousePressed(MouseEvent paramMouseEvent) {
     int i = paramMouseEvent.getX() - 13 >> 6;
     int j = paramMouseEvent.getY() - 40 >> 6;
+    if ((i > -1) & (i < 4) & (j > -1) & (j < 4)) {
     int k = i + (j << 2);
     if (i > 0 && num[k - 1] == "  ") {
       num[k - 1] = num[k];
@@ -136,6 +137,7 @@ public class s15shki extends JFrame implements MouseListener {
       if (k >= 13) {
         JOptionPane.showMessageDialog(null, "YOU WIN!!!");
         renum();
+      }
       } 
     } 
   }
