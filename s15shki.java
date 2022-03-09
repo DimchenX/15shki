@@ -70,7 +70,7 @@ public class s15shki extends JFrame implements MouseListener {
     return false;
   }
   
-  public static void main(String[] paramArrayOfString) {
+  public static void main(String[] args) {
     renum();
     win.setTitle("Pyatnashki");
     win.setSize(282, 310);
@@ -91,42 +91,39 @@ public class s15shki extends JFrame implements MouseListener {
       paramGraphics.drawRoundRect(i, j, 62, 62, 12, 12);
       paramGraphics.setColor(new Color(60, 60, 60, 200));
       paramGraphics.drawString(num[b], i + 18, j + 40);
-     // 
     } 
   }
   
   public void mouseClicked(MouseEvent paramMouseEvent) {}
   
-  public void mouseEntered(MouseEvent paramMouseEvent) {
-    repaint();
-  }
+  public void mouseEntered(MouseEvent paramMouseEvent) {}
   
   public void mouseExited(MouseEvent paramMouseEvent) {}
   
   public void mousePressed(MouseEvent paramMouseEvent) {
     int i = paramMouseEvent.getX() - 13 >> 6;
     int j = paramMouseEvent.getY() - 40 >> 6;
-    if ((i > -1) & (i < 4) & (j > -1) & (j < 4)) {
     int k = i + (j << 2);
+    if (i < 0 || i > 3 || j < 0 || j > 3) return;
     if (i > 0 && num[k - 1] == "  ") {
       num[k - 1] = num[k];
       num[k] = "  ";
-      win.repaint();
+      repaint();
     } 
     if (i < 3 && num[k + 1] == "  ") {
       num[k + 1] = num[k];
       num[k] = "  ";
-      win.repaint();
+      repaint();
     } 
     if (j > 0 && num[k - 4] == "  ") {
       num[k - 4] = num[k];
       num[k] = "  ";
-      win.repaint();
+      repaint();
     } 
     if (j < 3 && num[k + 4] == "  ") {
       num[k + 4] = num[k];
       num[k] = "  ";
-      win.repaint();
+      repaint();
     } 
     if (num[15] == "  ") {
       k = 0;
@@ -137,7 +134,7 @@ public class s15shki extends JFrame implements MouseListener {
       if (k >= 13) {
         JOptionPane.showMessageDialog(null, "YOU WIN!!!");
         renum();
-      }
+        repaint();
       } 
     } 
   }
